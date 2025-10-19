@@ -112,13 +112,13 @@ window.addEventListener('DOMContentLoaded', () => {
   const output = document.getElementById('linkOutput');
 
   function generateWishLink(name, msg) {
-    // Adjust base URL accordingly if hosted in a GitHub repo folder
-    const base = `${window.location.origin}/friend-wish-display.html`;
-    const params = new URLSearchParams({
-      name: encodeURIComponent(name),
-      msg: encodeURIComponent(msg),
-    });
-    return `${base}?${params.toString()}`;
+  const repoName = 'Diwali'; // replace this with your actual GitHub repo name
+  const base = `${window.location.origin}/${repoName}/friend-wish-display.html`;
+  const params = new URLSearchParams({
+    name: encodeURIComponent(name),
+    msg: encodeURIComponent(msg),
+  });
+  return `${base}?${params.toString()}`;
   }
 
   btn.addEventListener('click', () => {
