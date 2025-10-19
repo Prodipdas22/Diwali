@@ -39,13 +39,10 @@ document.addEventListener('click', (e) => {
 
 function getUrlParams() {
   const params = {};
-  window.location.search
-    .substring(1)
-    .split('&')
-    .forEach((pair) => {
-      const [key, value] = pair.split('=');
-      if (key) params[key] = decodeURIComponent(value || '');
-    });
+  const urlParams = new URLSearchParams(window.location.search);
+  for (const [key, value] of urlParams.entries()) {
+    params[key] = value;
+  }
   return params;
 }
 
