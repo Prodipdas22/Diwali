@@ -63,16 +63,6 @@ function showPersonalizedWish() {
 window.addEventListener('DOMContentLoaded', () => {
   showPersonalizedWish();
 
-  const shareBtn = document.getElementById('shareWishBtn');
-  if (shareBtn) {
-    shareBtn.addEventListener('click', () => {
-      const params = getUrlParams();
-      const shareLink = `${window.location.origin}${window.location.pathname}?name=${encodeURIComponent(
-        params.name
-      )}&msg=${encodeURIComponent(params.msg)}`;
-      navigator.clipboard.writeText(shareLink).then(() => {
-        alert('Wish link copied! Share it with your friends.');
-      });
-    });
+  
   }
 });
