@@ -121,26 +121,36 @@ window.addEventListener('DOMContentLoaded', () => {
   }
 
   btn.addEventListener('click', () => {
-    const name = nameInput.value.trim();
-    const msg = msgInput.value.trim();
+  const name = nameInput.value.trim();
+  const msg = msgInput.value.trim();
 
-    if (!name) {
-      alert("Please enter your friend's name.");
-      return;
-    }
-    if (!msg) {
-      alert('Please enter a personalized message.');
-      return;
-    }
+  // Validate for spaces
+  if (/s/.test(name)) {
+    alert("Please do not use spaces in the NAME.");
+    return;
+  }
+  if (/s/.test(msg)) {
+    alert("Please do not use spaces in the MESSAGE.");
+    return;
+  }
 
-    const url = generateWishLink(name, msg);
-    output.textContent = `Your personalized wish link: ${url}`;
-    output.style.cursor = 'pointer';
+  if (!name) {
+    alert("Please enter your friend's name.");
+    return;
+  }
+  if (!msg) {
+    alert("Please enter a personalized message.");
+    return;
+  }
 
-    output.onclick = () => {
-      navigator.clipboard.writeText(url).then(() => {
-        alert('Link copied! Share it with your friend.');
-      });
-    };
-  });
+  const url = generateWishLink(name, msg);
+  output.textContent = `Your personalized wish link: ${url}`;
+  output.style.cursor = 'pointer';
+
+  output.onclick = () => {
+    navigator.clipboard.writeText(url).then(() => {
+      alert('Link copied! Share it with your friend.');
+    });
+  };
+});
 });
